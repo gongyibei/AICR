@@ -1,0 +1,28 @@
+model:
+  model: resnet
+  criterion: CrossEntropyLoss
+  optimizer: Adam
+
+train:
+  epochs: 100
+  batch_size: 100
+  # [dir, label, type, usecache]
+  trainlist: [
+    ['../data/development', 0, 'csmt', True],
+    ['../data/clean_midi', 1, 'online', False],
+  ]
+
+  lr: 0.001
+  vs: 0.5
+
+eval:
+  modelpath: './models/resnet2/epoch_99.pth'
+  batch_size: 20
+  evallist: [
+    ['../baseline/data/eval/fake', 0, 'csmt', True],
+    ['../baseline/data/eval/real', 1, 'csmt', True],
+  ]
+
+
+
+
